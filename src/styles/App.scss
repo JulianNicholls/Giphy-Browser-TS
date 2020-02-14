@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,400,700');
+@import url('https://fonts.googleapis.com/css?family=Staatliches:400,700');
+
+$body-bg: #eef;
+$body-text: #111;
+$small-text: #333;
+
+$header-bg: #0e6171;
+$header-text: #c3f8d5;
+$header-product: #d2f3f9;
+$header-hover: #dbf5a8;
+
+$button-holder-bg: rgba(20, 20, 20, 0.3);
+$button-bg: $header-bg;
+$button-hover: lighten($header-bg, 10%);
+$button-text: $header-text;
+$button-disabled-bg: #ccc;
+$button-disabled-text: #999;
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: $body-bg;
+  color: $body-text;
+  font-family: Poppins, sans-serif;
+  margin: 3rem 0 0 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Staatliches', cursive;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+
+input, select {
+  font-size: 1rem;
+  padding: 0.3em 0.5em;
+}
+
+button {
+  border-radius: 3px;
+  font-size: 1rem;
+  padding: 0.3em;
+  cursor: pointer;
+
+  &:disabled {
+    background: $button-disabled-bg;
+    color: $button-disabled-text;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+
+  small {
+    font-size: 1.9rem;
+    color: $small-text;
+  }
+}
+
+header {
+  align-items: center;
+  background: $header-bg;
+  color: $header-text;
+  display: flex;
+  height: 3rem;
+  padding: 0 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  #product {
+    color: $header-product;
+    flex: 1;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: 500;
+      color: $header-hover;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .img-span {
+    flex: 4;
+  }
+
+  .section {
+    cursor: pointer;
+    flex: 1;
+
+    &:hover {
+      font-weight: 500;
+      color: $header-hover;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.gif-list {
+  display: grid;
+  grid-gap: 0 0.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 10px;
+
+  .gif-link {
+    grid-row-end: span 21;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .lazy {
+    background: #ddd;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.random {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .gif-holder {
+    min-height: 75vh;
+  }
+
+  .button-holder {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background: $button-holder-bg;
+    display: flex;
+    justify-content: space-evenly;
+    // margin: 1em 0 0 0;
+    padding: 0.75em 1em;
+  }
+
+  button {
+    background: $button-bg;
+    color: $button-text;
+    display: block;
+    padding: 0.5em 0.8em;
+
+    &:hover {
+      background: $button-hover;
+    }
+  }
+}
