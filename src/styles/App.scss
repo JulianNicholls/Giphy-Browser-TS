@@ -162,6 +162,11 @@ header {
     display: block;
     padding: 0.5em 0.8em;
 
+    &:disabled {
+      background: #555;
+      color: #bbb;
+    }
+
     &:hover {
       background: $button-hover;
     }
