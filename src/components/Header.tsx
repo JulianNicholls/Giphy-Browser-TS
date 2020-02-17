@@ -6,6 +6,7 @@ interface IHeader {
   search(text: string): void;
   setResultCount(n: number): void;
 }
+
 const Header = (props: IHeader) => {
   const [searchText, setSearchText] = useState('');
   const { chooseTrending, chooseRandom, search, setResultCount } = props;
@@ -32,16 +33,16 @@ const Header = (props: IHeader) => {
           type="search"
           placeholder="search"
           value={searchText}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>): void =>
             setSearchText(evt.target.value)
           }
-          onKeyUp={(evt: React.KeyboardEvent<HTMLInputElement>) => {
+          onKeyUp={(evt: React.KeyboardEvent<HTMLInputElement>): void => {
             if (evt.key === 'Enter') search(evt.currentTarget.value);
           }}
         />
         &nbsp;
         <select
-          onChange={(evt: React.ChangeEvent<HTMLSelectElement>) =>
+          onChange={(evt: React.ChangeEvent<HTMLSelectElement>): void =>
             setResultCount(Number(evt.target.value))
           }
         >

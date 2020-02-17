@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { API_KEY, BASE_URL } from '../api';
+import { IGif } from './GifList';
 
-const Random = () => {
-  const [gif, setGif] = useState({});
-  const handle = useRef(0);
+const Random = (): JSX.Element => {
+  const [gif, setGif] = useState<IGif>();
+  const handle = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     loadRandom();
@@ -21,9 +22,7 @@ const Random = () => {
       );
       const json = await response.json();
 
-      console.log(json.data.image_height);
-
-      setGif(json);
+      setGif(json.data);
     } catch (err) {
       console.error(err);
     }
@@ -35,20 +34,18 @@ const Random = () => {
     handle.current = setInterval(loadRandom, 5000);
   };
 
-  const image = gif.data;
-
   return (
     <div className="random">
-      {image ? (
+      {gif ? (
         <>
           <div className="gif-holder">
-            <img src={image.images.original.url} alt={image.title} />
+            <img src={gif.images.original.url} alt={gif.title} />
           </div>
           <div className="button-holder">
-            <button disabled={handle.current !== 0} onClick={loadRandom}>
+            <button disabled={handle.current !== null} onClick={loadRandom}>
               Another!
             </button>
-            <button disabled={handle.current !== 0} onClick={slideshow}>
+            <button disabled={handle.current !== null} onClick={slideshow}>
               Slide show
             </button>
           </div>
