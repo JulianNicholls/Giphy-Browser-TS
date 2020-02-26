@@ -23,7 +23,11 @@ function DeferredImage({ image }) {
           setLoaded(true);
 
           return (
-            <img ref={ref} src={image.images.fixed_width.url} alt={image.title} />
+            <img
+              ref={ref}
+              src={image.images.fixed_width.url}
+              alt={image.title}
+            />
           );
         }
 
