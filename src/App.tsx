@@ -32,7 +32,7 @@ const App = () => {
         setResultCount={setSearchResultCount}
       />
       <main className="container">
-        {page === 'trending' && <Trending />}
+        {page === 'trending' && <Trending resultCount={resultCount} />}
         {page === 'random' && <Random />}
         {page === 'searchResults' && (
           <SearchResults searchText={searchText} resultCount={resultCount} />

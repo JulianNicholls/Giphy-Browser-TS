@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { API_KEY, BASE_URL } from '../api';
-import { IGif } from './GifList';
 
 const Random = (): JSX.Element => {
   const [gif, setGif] = useState<IGif>();

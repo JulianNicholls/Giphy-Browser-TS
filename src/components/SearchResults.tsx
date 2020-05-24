@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-import GifList, { IGifDataList } from './GifList';
+import GifList from './GifList';
 
 import { API_KEY, BASE_URL } from '../api';
 
-interface IResults {
+interface SRProps {
   searchText: string;
   resultCount: number;
 }
 
-const SearchResults = (props: IResults): JSX.Element => {
+const SearchResults = (props: SRProps): JSX.Element => {
   const [gifs, setGifs] = useState<IGifDataList>({ data: null });
   const { searchText, resultCount } = props;
 
