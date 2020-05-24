@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
-import GifList, { IGifDataList } from './GifList';
+import GifList from './GifList';
 
 import { API_KEY, BASE_URL } from '../api';
 
-const Trending = (): JSX.Element => {
+interface TProps {
+  resultCount: number;
+}
+
+const Trending = ({ resultCount }: TProps): JSX.Element => {
   const [gifs, setGifs] = useState<IGifDataList>({ data: null });
 
-  // A useEffect() function cannot be an async function, so the async function
-  // must be elsewhere and called with () => { ... }.
+  // A useEffect() function cannot be an async function itself, so the async
+  // function must be defined elsewhere (or inside, as here) and called with
+  // () => { ... }.
   useEffect(() => {
     const loadTrending = async () => {
       try {
         const response: Response = await fetch(
-          `${BASE_URL}/trending?api_key=${API_KEY}&rating=R&limit=32`
+          `${BASE_URL}/trending?api_key=${API_KEY}&rating=R&limit=${resultCount}`
         );
         const json: IGifDataList = await response.json();
 
@@ -24,7 +29,7 @@ const Trending = (): JSX.Element => {
     };
 
     loadTrending();
-  }, []);
+  }, [resultCount]);
 
   return (
     <div className="trending">
