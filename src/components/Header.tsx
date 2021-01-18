@@ -33,17 +33,17 @@ const Header = (props: IHeader) => {
           type="search"
           placeholder="search"
           value={searchText}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>): void =>
-            setSearchText(evt.target.value)
+          onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+            setSearchText(e.target.value)
           }
-          onKeyUp={(evt: React.KeyboardEvent<HTMLInputElement>): void => {
-            if (evt.key === 'Enter') search(evt.currentTarget.value);
+          onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void => {
+            if (e.key === 'Enter') search(e.currentTarget.value);
           }}
         />
         &nbsp;
         <select
-          onChange={(evt: React.ChangeEvent<HTMLSelectElement>): void =>
-            setResultCount(Number(evt.target.value))
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>): void =>
+            setResultCount(Number(e.target.value))
           }
         >
           <option value="24">24</option>
