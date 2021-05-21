@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 import { InView } from 'react-intersection-observer';
 
@@ -23,11 +22,7 @@ function DeferredImage({ image }) {
           setLoaded(true);
 
           return (
-            <img
-              ref={ref}
-              src={image.images.fixed_width.url}
-              alt={image.title}
-            />
+            <img ref={ref} src={image.images.fixed_width.url} alt={image.title} />
           );
         }
 
@@ -36,9 +31,5 @@ function DeferredImage({ image }) {
     </InView>
   );
 }
-
-DeferredImage.propTypes = {
-  image: PropTypes.object.isRequired,
-};
 
 export default DeferredImage;

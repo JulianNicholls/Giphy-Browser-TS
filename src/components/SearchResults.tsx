@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import GifList from './GifList';
 
@@ -15,6 +15,8 @@ const SearchResults = (props: SRProps): JSX.Element => {
 
   useEffect(() => {
     const loadResults = async () => {
+      console.log(resultCount);
+
       try {
         const response: Response = await fetch(
           `${BASE_URL}/search?q=${searchText}&api_key=${API_KEY}&rating=R&limit=${resultCount}`
